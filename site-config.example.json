@@ -1,0 +1,13 @@
+{
+  "note": "Reference only. The live values are in src/data/siteConfig.ts and src/data/plans.ts.",
+  "officialWhatsAppNumber": "923198632860",
+  "formattedWhatsAppNumber": "03198632860",
+  "officialEmail": "neondigitalz7@gmail.com",
+  "siteUrl": "",
+  "prices_PKR": {
+    "basic": { "1m": 450, "3m": 1100, "6m": 2000, "1y": 3500 },
+    "standard": { "1m": 650, "3m": 1700, "6m": 3000, "1y": 5500 },
+    "premium": { "1m": 900, "3m": 2300, "6m": 4000, "1y": 7000 }
+  },
+  "features": { "reseller": false, "restream": false, "channelCategories": false }
+}
