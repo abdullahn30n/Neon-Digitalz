@@ -1,41 +1,44 @@
-# Neon Digital website (Stage 1 of 3)
+# Neon Digitalz website
 
-React 19, TypeScript, Vite and Tailwind CSS v4, as in the project you supplied. This stage builds the design system, header, theme switch, footer and home page, and replaces content that was not supported by owner-provided facts.
+**Open `index.html` first.** Double-click the `index.html` in this folder: it is the complete website in one file (script, styles, logo and icons are inside it). No server, Node.js or npm is needed to view it. It works from a `file://` address in a modern browser (tested in Chrome).
 
-## Just want to look at it?
-Double-click **`index.html`**. It works without installing anything, and the same root folder can be published on GitHub Pages (Settings > Pages > Deploy from branch > `/ (root)`). `app.js` must stay next to it.
+One brand identity, **Original Neon** (blue `#3046F0`, white and navy/black `#0B1020`), in two modes: **Light** (default) and **Dark**. The visitor's choice is saved; a missing or invalid saved value falls back to Light. The system colour setting is not used.
 
-`dev.html` is the Vite source entry (used by `npm run dev`). After changing code, regenerate `index.html` and `app.js` with `npm run build:standalone`.
+React 19, TypeScript, Vite and Tailwind CSS v4. Front end only: no backend, database, payment gateway or deployment config. Pages use hash routes (`#/plans`). Nothing is deployed.
 
-## Commands
+## How `index.html` is made
+`npm run build:standalone` bundles `src/` with esbuild and writes the root `index.html` (script and CSS inline, logos and icons embedded as data). Run it after any source change so `index.html` is not out of date. `dev.html` is the Vite source entry used for development only.
+
+## Develop
+Prerequisites: Node.js 20 or newer and npm.
 ```bash
 npm install
-npm run dev      # http://localhost:3000/dev.html
-npm run lint     # tsc --noEmit
-npm run build    # production build into dist/
+npm run dev              # http://localhost:3000/dev.html
+npm run lint             # tsc --noEmit
+npm run build            # vite build, then dist/dev.html is renamed dist/index.html
+npm run preview
+npm run build:standalone # rebuilds the root index.html
 ```
-These are the project's existing commands. **They have not been run in this stage** (see SITE-AUDIT.md, "What was and was not tested").
 
-## Where to edit
+## Edit
 | What | File |
-| --- | --- |
-| WhatsApp number, email, payment methods, feature switches, approved reviews | `src/data/siteConfig.ts` |
-| Plans, prices, inclusions (all price maths) | `src/data/plans.ts` |
-| Device guides | `src/data/devices.ts` |
-| FAQ | `src/data/faqs.ts` |
-| Guides (articles) | `src/data/articles.ts` |
-| Policies | `src/data/policies.ts` |
-| Colours, spacing, type, dark theme | `src/index.css` (tokens at the top) |
+|---|---|
+| Colours, Light and Dark tokens | `src/index.css` (`:root` = Light; `[data-theme="dark"]` = Dark) |
+| Mode and cursor preferences | `src/lib/prefs.ts`, `src/components/Preferences.tsx` |
+| Hero and home sections | `src/views/HomeView.tsx`, `src/components/HeroStage.tsx` |
+| Moving channel bar | `src/components/ChannelShowcase.tsx` (names from `src/data/channels.ts`) |
+| PKR prices, plan figures, descriptions | `src/data/plans.ts` |
+| USD rate and formula | `src/data/currency.ts` (all price text comes from `quote()`) |
+| Device tabs, apps, steps | `src/data/deviceApps.ts`, icons in `src/assets/apps/` |
+| Provider catalogue | `src/data/providers.ts`, logos in `src/assets/providers/` |
+| Brand, WhatsApp, email, payment methods | `src/data/siteConfig.ts` |
+| Policies, FAQs, guides | `src/data/policies.ts`, `src/content/` |
 
-Placeholders and unconfirmed items are marked `CONFIRM` in the code and listed in OWNER-DECISIONS.md.
+## Browser checks (optional)
+`npm run qa` runs eight check files in `qa/` against the root `index.html`. They need Playwright and Chrome, which are not project dependencies; set `PLAYWRIGHT_MODULE_DIR` and `CHROME_PATH` (see `qa/harness.mjs`). Each file takes under a minute.
 
-## Structure
-```
-src/
-  App.tsx                 hash router, order dialog state, page titles
-  index.css               design tokens, light and dark themes, components
-  components/             Header, Footer, ThemeToggle, PlanPicker, WhatsAppOrderModal, Icon, Branding
-  views/                  Home, Plans, Channels, Devices, Blog, FAQ, Contact, About, HowItWorks, Policy, Reseller (hidden)
-  data/                   siteConfig, plans, devices, faqs, articles, policies
-```
-Routes use the URL hash (`#/plans`), so the site works on any static host.
+## Documents
+`PHASE8-REPORT.md` (what changed, tests, limits), `OWNER-DECISIONS.md`, `CONTENT-CHECKLIST.md`; older material in `docs/history/`; developer notes in `docs/START-HERE.html` (supporting material only).
+
+## Known limitations
+`npm install`, `npm run build` (Vite) and `npm run lint` were not run where this was packaged (no network); the `dev.html` entry is untested with real Vite. Only Chrome was tested. App and provider logos are small crops from the owner's screenshots. Operational claims (payments, support, catalogue, rights, provider and app details) are owner-supplied, not independently verified. USD uses a dated reference rate (1 USD = PKR 276.74, 23 Oct 2026), not a live feed.

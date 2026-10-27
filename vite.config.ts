@@ -6,12 +6,14 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
-    // Vite's source entry is dev.html (root index.html is the ready-built site for GitHub Pages).
-    build: {rollupOptions: {input: path.resolve(__dirname, 'dev.html')}},
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+    },
+    build: {
+      // The source entry is dev.html; scripts/finalize-dist.mjs renames the built page to dist/index.html.
+      rollupOptions: { input: path.resolve(__dirname, 'dev.html') },
     },
     server: {
       hmr: process.env.DISABLE_HMR !== 'true',

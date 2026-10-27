@@ -1,17 +1,28 @@
-# Owner decisions needed
+# Owner decisions (current, Phase 8)
 
-1. **WhatsApp number**: set to 03198632860 (`923198632860`) from your brief. Confirm it is the business line.
-2. **Email**: `neondigitalz7@gmail.com` was in your earlier website files. Confirm or replace.
-3. **Payment methods**: JazzCash, EasyPaisa, Bank Transfer, Raast, Debit/Credit Card, SadaPay, NayaPay, International Transfer, from your earlier site. Confirm each, and have account details ready to share in chat.
-4. **What each plan includes**: not supplied, so none is described. Add statements to `includes` in `src/data/plans.ts` once confirmed.
-5. **"Most popular" or other plan label**: none shown. Set `badge` in `plans.ts` only if you approve one.
-6. **Channels and content**: no list is published. Provide the channels and content you are authorised to advertise before any list or category section is added.
-7. **Devices**: no device is marked Confirmed. Add ids to `confirmedDevices` in `src/data/devices.ts` after verifying each type, and supply verified app names and links.
-8. **Reseller and Restream**: hidden. Confirm whether either is genuinely offered and approved before enabling `features.reseller` / `features.restream`.
-9. **Support hours and response time**: none published. Provide verified values if you want them shown.
-10. **Domain**: unknown, so no canonical URLs, sitemap or social image. Set `siteUrl` once known.
-11. **Policies**: confirm legal business name, data retention, acceptable use, and the actual refund conditions (time limits, what qualifies, refund method).
-12. **Reviews**: none shown. Add real, permitted reviews to `approvedReviews` in `siteConfig.ts`.
+Order of authority: latest explicit instruction, then earlier confirmations, then project data, then public pages.
 
-## Added in Phase 2
-- **Channel topics are now shown** (ticker on the home page, foldable panels on Channels). They list kinds of content only, with an "ask us, availability varies" note. Turn off with `features.channelCategories = false` in `src/data/siteConfig.ts` if you would rather not show them until your channel list is confirmed.
+## In force
+| Item | Decision | Where |
+|---|---|---|
+| Brand identity | One identity: **Original Neon, blue / white / black** (`#3046F0`, `#0B1020`, `#F5F7FF`, `#FFFFFF`, `#EAF0FF`, `#596174`, `#E3E7F0`, supporting green `#138675` used sparingly) | `src/index.css` |
+| Appearance | **Light** (default) and **Dark**: two modes of the same brand, not two themes. Saved choice kept; missing or invalid falls back to Light; the system setting is not used | `src/lib/prefs.ts`, `dev.html` |
+| Removed | Every earlier alternative theme (Phases 5 to 7): selector, palettes, preference ids and tests | |
+| Brand name, email, WhatsApp | Neon Digitalz, neondigitalz7@gmail.com, +92 3198632860 | `siteConfig.ts` |
+| PKR prices | Basic 450 / 1,100 / 2,000 / 3,500; Standard 650 / 1,700 / 3,000 / 5,500; Premium 900 / 2,300 / 4,000 / 7,000 | `plans.ts` |
+| USD | `ceil(PKR / 276.74) + surcharge` (Basic $0, Standard $1, Premium $2), whole dollars, dated reference rate (23 Oct 2026), not live | `currency.ts` |
+| Plan figures, support labels, 8 payment methods, worldwide intent, 24-hour trial from issue (max 3, manual) | unchanged | |
+| Device apps and setup text | As shown in the supplied screenshots (see CONTENT-CHECKLIST.md) | `deviceApps.ts` |
+| Provider catalogue | The 23 names visible in the supplied screenshot, plus 4 earlier-list names kept for confirmation | `providers.ts` |
+| Plan picker | Two-step layout from the supplied pricing screenshot, in the brand colours; "Most popular" on Standard and "Lowest per month" on 1 year are as shown there | `PlanPicker.tsx` |
+| Entry point | Root `index.html` (self-contained). `dev.html` is the developer entry | |
+| Deployment | not authorized | |
+
+## Please decide
+- **Eagle 4K, Streambuzz 4K, ATV, SkyGlass**: in the project's earlier list but not visible in the scrolled provider screenshot (which may hide a top row). They are shown with a neutral initial. Set `listed: false` in `providers.ts` or remove them if they are not yours.
+- **Firestick and Samsung/LG screenshots were cut off**: setup steps 3 and 4 (Firestick) and step 4 (Samsung/LG), and any Firestick app cards below the first two, could not be read. Steps were written to match and are marked as inferred in `deviceApps.ts`. Please check them.
+- The logo reads "NEON DIGITAL PK, IPTV & STREAMING SOLUTIONS" while the brand is "Neon Digitalz".
+- "M3U + Xtream Codes" was visible on the Standard plan only; it is shown on all plans.
+
+## Superseded
+The two-theme setup of Phase 7; the six-theme and Onyx setups of Phases 5 and 6; USD prices with cents.
