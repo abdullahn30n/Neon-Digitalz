@@ -1,8 +1,10 @@
-# Neon Digitalz website
+> Latest changes: see CHANGES-REPAIR-REDESIGN.md (NEON DIGITAL PK identity, graphite/emerald design system, motion, fixes).
+
+# NEON DIGITAL website
 
 **Open `index.html` first.** Double-click the `index.html` in this folder: it is the complete website in one file (script, styles, logo and icons are inside it). No server, Node.js or npm is needed to view it. It works from a `file://` address in a modern browser (tested in Chrome).
 
-One brand identity, **Original Neon** (blue `#3046F0`, white and navy/black `#0B1020`), in two modes: **Light** (default) and **Dark**. The visitor's choice is saved; a missing or invalid saved value falls back to Light. The system colour setting is not used.
+One brand identity, **NEON DIGITAL**: crimson, deep burgundy, near-black, antique gold and molten gold, in two modes. **Dark** is the default for a fresh visitor; **Light** is the second mode. The visitor's saved choice is kept; a missing or invalid saved value falls back to Dark. The system colour setting is not used.
 
 React 19, TypeScript, Vite and Tailwind CSS v4. Front end only: no backend, database, payment gateway or deployment config. Pages use hash routes (`#/plans`). Nothing is deployed.
 
@@ -23,7 +25,8 @@ npm run build:standalone # rebuilds the root index.html
 ## Edit
 | What | File |
 |---|---|
-| Colours, Light and Dark tokens | `src/index.css` (`:root` = Light; `[data-theme="dark"]` = Dark) |
+| Colours, Light and Dark tokens | `src/index.css` (`:root` = Light; `[data-theme="dark"]` = Dark, the default) |
+| Hero artwork and logo | `src/assets/hero-marble.webp` (original, generated), `src/components/Branding.tsx` (SVG mark), `public/` (favicon, social image) |
 | Mode and cursor preferences | `src/lib/prefs.ts`, `src/components/Preferences.tsx` |
 | Hero and home sections | `src/views/HomeView.tsx`, `src/components/HeroStage.tsx` |
 | Moving channel bar | `src/components/ChannelShowcase.tsx` (names from `src/data/channels.ts`) |
@@ -38,7 +41,7 @@ npm run build:standalone # rebuilds the root index.html
 `npm run qa` runs eight check files in `qa/` against the root `index.html`. They need Playwright and Chrome, which are not project dependencies; set `PLAYWRIGHT_MODULE_DIR` and `CHROME_PATH` (see `qa/harness.mjs`). Each file takes under a minute.
 
 ## Documents
-`PHASE8-REPORT.md` (what changed, tests, limits), `OWNER-DECISIONS.md`, `CONTENT-CHECKLIST.md`; older material in `docs/history/`; developer notes in `docs/START-HERE.html` (supporting material only).
+`PHASE10-REPORT.md` (what changed, tests, limits), `OWNER-DECISIONS.md`, `CONTENT-CHECKLIST.md`; older material in `docs/history/`; developer notes in `docs/START-HERE.html` (supporting material only).
 
 ## Known limitations
 `npm install`, `npm run build` (Vite) and `npm run lint` were not run where this was packaged (no network); the `dev.html` entry is untested with real Vite. Only Chrome was tested. App and provider logos are small crops from the owner's screenshots. Operational claims (payments, support, catalogue, rights, provider and app details) are owner-supplied, not independently verified. USD uses a dated reference rate (1 USD = PKR 276.74, 23 Oct 2026), not a live feed.

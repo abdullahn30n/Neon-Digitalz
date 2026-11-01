@@ -1,4 +1,4 @@
-# Content checklist (Phase 8)
+# Content checklist (Phase 10)
 
 **A** owner approved/confirmed (includes the Phase 6 instruction to treat previously unconfirmed items as confirmed). **S** source verified. **O** operational check still worth doing. **L** legal review advisable. **N** not published.
 
@@ -38,3 +38,13 @@
 | "Most popular" (Standard), "Lowest per month" (1 year), "M3U + Xtream Codes" | A (owner screenshot) | |
 | Moving channel names (existing channel data) | A | examples; availability confirmed before ordering |
 | USD formula and rate | A, O | dated reference rate; refresh before launch |
+
+## Phase 10 additions
+| Item | Status | Note |
+|---|---|---|
+| Brand name NEON DIGITAL and domain neondigital.store | A | the old spelling was removed from pages, metadata, schema, templates and tests |
+| New logo mark, hero artwork, social image | A (original artwork made for this site) | no third-party imagery; the owner's reference image was not used directly |
+| Provider names (23 from screenshot) | A (owner-supplied) | names only; licensing and partnership: N |
+| Eagle 4K, Streambuzz 4K, ATV, SkyGlass | needs owner confirmation | |
+| Inferred device steps and unseen Firestick app cards | needs owner confirmation | |
+| Gold text | used for labels, prices and accents only, never for long paragraphs | |
